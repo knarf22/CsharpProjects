@@ -1,3 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
-Console.WriteLine("KuLIT NI CLE");
+using CSharpChallenges.UI;
+
+
+var display = new Menu();
+display.Display();
