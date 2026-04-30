@@ -1,6 +1,10 @@
 ﻿using CSharpChallenges.Data;
+using CSharpChallenges.Models;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using System.Security.Cryptography;
+using System.Text;
 
 var builder = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
@@ -27,3 +31,24 @@ foreach (var u in users)
     Console.WriteLine(u.FullName);
 }
 // test branch
+
+
+var login = new Login(db);
+
+Console.Write("Enter First Name: ");
+string firstName = Console.ReadLine();
+
+Console.Write("Enter PIN: ");
+string inputPin = Console.ReadLine();
+
+if (login.LoginUser(firstName, inputPin))
+{
+    Console.WriteLine("Login successful!");
+}
+else
+{
+    Console.WriteLine("Invalid credentials.");
+}
+
+
+
