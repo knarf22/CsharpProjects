@@ -8,5 +8,7 @@ namespace CSharpChallenges.Models
 {
     public class RunMenu
     {
+        public bool IsRunning { get; set; } = true;
+        public bool isLoggedIn { get; set; } = false;
     }
 }
