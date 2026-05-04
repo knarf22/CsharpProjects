@@ -1,0 +1,70 @@
+﻿using CSharpChallenges.Data;
+using CSharpChallenges.Models;
+using CSharpChallenges.Services;
+using CSharpChallenges.UI;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSharpChallenges
+{
+    public class App
+    {
+        private LoginService _loginService;
+        private Menu _menu;
+        public App(LoginService loginService, Menu menu)
+        {
+            _loginService = loginService;
+            _menu = menu;
+        }
+
+        public void Run()
+        {
+            Console.WriteLine("Enter First Name: ");
+            string firstName = Console.ReadLine();
+
+            Console.WriteLine("Enter PIN: ");
+            string inputPin = Console.ReadLine();
+
+            if(_loginService.LoginUser(firstName!, inputPin!) == null)
+            {
+                Console.WriteLine("Invalid credentials.");
+            }
+
+            Console.WriteLine("Login successful!");
+
+            // 📋 MENU LOOP
+            bool isRunning = true;
+
+            while (isRunning)
+            {
+                _menu.Display();
+                string choice = _menu.GetChoice();
+
+                switch (choice)
+                {
+                    case "1":
+                        Console.WriteLine("Show Balance logic here");
+                        break;
+
+                    case "2":
+                        Console.WriteLine("Deposit logic here");
+                        break;
+
+                    case "5":
+                        Console.WriteLine("Goodbye!");
+                        isRunning = false;
+                        break;
+
+                    default:
+                        Console.WriteLine("Invalid choice.");
+                        break;
+                }
+            }
+
+
+        }
+    }
+}

@@ -1,5 +1,8 @@
-﻿using CSharpChallenges.Data;
+﻿using CSharpChallenges;
+using CSharpChallenges.Data;
 using CSharpChallenges.Models;
+using CSharpChallenges.Services;
+using CSharpChallenges.UI;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -23,35 +26,8 @@ var options = new DbContextOptionsBuilder<AppDbContext>()
 // 🔥 CREATE DB CONTEXT
 using var db = new AppDbContext(options);
 
-// 🔥 LINQ QUERY
-var users = db.TblUser.ToList();
+var loginService = new LoginService(db);
+var menu = new Menu();
 
-foreach (var u in users)
-{
-    Console.WriteLine(u.FullName);
-}
-// test branch
-
-
-// / 🔥 LOGIN TEST
-var login = new Login(db);
-
-Console.Write("Enter First Name: ");
-string firstName = Console.ReadLine();
-
-Console.Write("Enter PIN: ");
-string inputPin = Console.ReadLine();
-
-if (login.LoginUser(firstName, inputPin))
-{
-    Console.WriteLine("Login successful!");
-}
-else
-{
-    Console.WriteLine("Invalid credentials.");
-}
-
-//push lang
-//test
-
-//tanmgena
+var app = new App(loginService, menu);
+app.Run();

@@ -1,33 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using CSharpChallenges.Data;
+using CSharpChallenges.Models;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace CSharpChallenges.Data
+namespace CSharpChallenges.Services
 {
-    public class Login
+    public class LoginService
     {
-        private readonly AppDbContext _db;
-        public Login(AppDbContext db)
+        private readonly AppDbContext _context;
+
+        public LoginService(AppDbContext context)
         {
-            _db = db;
+            _context = context;
         }
-        public bool LoginUser( string firstName, string inputPin)
+
+        public TblUser? LoginUser(string firstName, string inputPin)
         {
-            var user = _db.TblUser
+            var user = _context.TblUser
                 .FirstOrDefault(u => u.FirstName == firstName);
 
             if (user == null)
-                return false;
+                return null;
 
-            string inputHash = GetMd5(inputPin);
+            string inputHash = HashPin(inputPin);
 
-            return user.Pin == inputHash;
+            if (user.Pin != inputHash)
+                return null;
+
+            return user;
         }
 
-        public string GetMd5(string input)
+        private string HashPin(string input)
         {
             using (MD5 md5 = MD5.Create())
             {
