@@ -16,5 +16,6 @@ namespace CSharpChallenges.Models
         public string Pin { get; set; }
         public decimal Balance { get; set; }
         public string FullName => $"{FirstName} {LastName}";
+        public bool IsAdmin { get; set; }
     }
 }

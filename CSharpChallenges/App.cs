@@ -27,8 +27,9 @@ namespace CSharpChallenges
 
             Console.WriteLine("Enter PIN: ");
             string inputPin = Console.ReadLine();
+            var user = _loginService.LoginUser(firstName!, inputPin);
 
-            if(_loginService.LoginUser(firstName!, inputPin!) == null)
+            if (user == null)
             {
                 Console.WriteLine("Invalid credentials.");
             }
@@ -40,7 +41,7 @@ namespace CSharpChallenges
 
             while (isRunning)
             {
-                _menu.Display();
+                _menu.Display(user.IsAdmin);
                 string choice = _menu.GetChoice();
 
                 switch (choice)
