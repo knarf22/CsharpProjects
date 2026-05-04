@@ -54,11 +54,3 @@ else
 //push lang
 //test
 
-if (login.LoginUser(firstName, inputPin))
-{
-    Console.WriteLine("Login successful!");
-}
-else
-{
-    Console.WriteLine("Invalid credentials.");
-}
