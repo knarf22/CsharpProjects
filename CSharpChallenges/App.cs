@@ -56,7 +56,7 @@ namespace CSharpChallenges
                         break;
 
                     case "2":
-                        Console.WriteLine("Deposit logic here");
+                        _balanceService.WithdrawBalance(user.UserId);
                         break;
 
                     case "4":

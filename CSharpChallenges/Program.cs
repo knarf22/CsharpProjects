@@ -16,8 +16,6 @@ var config = builder.Build();
 
 string conn = config.GetConnectionString("DefaultConnection");
 
-Console.WriteLine(conn);
-
 // 🔥 CREATE DB OPTIONS (THIS IS WHAT YOU ARE MISSING)
 var options = new DbContextOptionsBuilder<AppDbContext>()
     .UseSqlServer(conn)
