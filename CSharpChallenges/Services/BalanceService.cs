@@ -17,6 +17,18 @@ namespace CSharpChallenges.Services
             _context = context;
         }
 
+        public void GetUserBalance(int userId)
+        {
+            var balances = (from balance in
+                         _context.TblUser
+                            where balance.UserId == userId
+                            select balance).ToList();
+
+            foreach (var b in balances)
+            {
+                Console.WriteLine($"Balance: {b.Balance} ");
+            }
+        }
         public void GetATMBalance()
         {
                var balances = from balance in 

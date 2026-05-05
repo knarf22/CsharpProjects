@@ -34,6 +34,7 @@ namespace CSharpChallenges
             if (user == null)
             {
                 Console.WriteLine("Invalid credentials.");
+                return;
             }
 
             Console.WriteLine("Login successful!");
@@ -50,6 +51,7 @@ namespace CSharpChallenges
                 {
                     case "1":
                         Console.WriteLine("Show Balance logic here");
+                        _balanceService.GetUserBalance(user.UserId);
 
                         break;
 

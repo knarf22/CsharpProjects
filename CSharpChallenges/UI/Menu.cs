@@ -19,7 +19,6 @@ namespace CSharpChallenges.UI
             {
                 Console.WriteLine("5. Show ATM Balance");
                 Console.WriteLine("6. Update Balance");
-
             }
         }
 
