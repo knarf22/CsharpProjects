@@ -14,10 +14,12 @@ namespace CSharpChallenges
     {
         private LoginService _loginService;
         private Menu _menu;
-        public App(LoginService loginService, Menu menu)
+        private BalanceService _balanceService;
+        public App(LoginService loginService, Menu menu, BalanceService balanceService)
         {
             _loginService = loginService;
             _menu = menu;
+            _balanceService = balanceService;
         }
 
         public void Run()
@@ -48,6 +50,8 @@ namespace CSharpChallenges
                 {
                     case "1":
                         Console.WriteLine("Show Balance logic here");
+                        _balanceService.GetAllBalance();
+
                         break;
 
                     case "2":

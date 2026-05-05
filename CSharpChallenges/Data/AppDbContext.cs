@@ -16,5 +16,11 @@ namespace CSharpChallenges.Data
         }
 
         public DbSet<TblUser> TblUser { get; set; }
+        public DbSet<TblBalance> TblBalance { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<TblBalance>().HasKey(b => b.BalanceId);
+        }
     }
 }

@@ -27,7 +27,8 @@ var options = new DbContextOptionsBuilder<AppDbContext>()
 using var db = new AppDbContext(options);
 
 var loginService = new LoginService(db);
+var balanceService = new BalanceService(db);
 var menu = new Menu();
 
-var app = new App(loginService, menu);
+var app = new App(loginService, menu, balanceService);
 app.Run();
