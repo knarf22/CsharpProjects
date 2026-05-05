@@ -12,13 +12,14 @@ namespace CSharpChallenges.UI
         {
             Console.WriteLine("Welcome to the C# Challenges!");
             Console.WriteLine("1. Show Balance");
-            Console.WriteLine("2. Deposit");
-            Console.WriteLine("3. Withdraw");
-            Console.WriteLine("4. Update Profile");
-            Console.WriteLine("5. Exit");
+            Console.WriteLine("2. Withdraw");
+            Console.WriteLine("3. Update Profile");
+            Console.WriteLine("4. Exit");
             if(isAdmin)
             {
-                Console.WriteLine("6. Admin Panel");
+                Console.WriteLine("5. Show ATM Balance");
+                Console.WriteLine("6. Update Balance");
+
             }
         }
 

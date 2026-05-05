@@ -50,7 +50,6 @@ namespace CSharpChallenges
                 {
                     case "1":
                         Console.WriteLine("Show Balance logic here");
-                        _balanceService.GetAllBalance();
 
                         break;
 
@@ -58,11 +57,31 @@ namespace CSharpChallenges
                         Console.WriteLine("Deposit logic here");
                         break;
 
-                    case "5":
+                    case "4":
                         Console.WriteLine("Goodbye!");
                         isRunning = false;
                         break;
 
+                    case "5":
+                        if (user.IsAdmin)
+                        {
+                            _balanceService.GetATMBalance();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid choice.");
+                        }
+                        break;
+                    case "6":
+                        if (user.IsAdmin)
+                        {
+                            Console.WriteLine("Update Balance logic here");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid choice.");
+                        }
+                        break;
                     default:
                         Console.WriteLine("Invalid choice.");
                         break;

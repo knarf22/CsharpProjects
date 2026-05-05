@@ -17,7 +17,7 @@ namespace CSharpChallenges.Services
             _context = context;
         }
 
-        public void GetAllBalance()
+        public void GetATMBalance()
         {
                var balances = from balance in 
                         _context.TblBalance
