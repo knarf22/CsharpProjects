@@ -67,7 +67,6 @@ namespace CSharpChallenges.Services
             var atmBalance = GetATMAllBalance()
                 .OrderByDescending(b => b.Denomination)
                 .ToList();
-
             int remaining = amount;
             var deduction = new Dictionary<int, int>();
 

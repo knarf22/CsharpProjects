@@ -66,6 +66,11 @@ namespace CSharpChallenges
                         Continue();
                         break;
 
+                    case "3":
+                        _loginService.ChangePin(user.UserId);
+                        Continue();
+                        break;
+
                     case "4":
                         Console.WriteLine("Goodbye!");
                         isRunning = false;

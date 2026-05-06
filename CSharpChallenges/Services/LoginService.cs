@@ -1,5 +1,6 @@
 ﻿using CSharpChallenges.Data;
 using CSharpChallenges.Models;
+using System.Net.WebSockets;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -45,6 +46,25 @@ namespace CSharpChallenges.Services
 
                 return sb.ToString();
             }
+        }
+
+        public void ChangePin(int userId)
+        {
+            Console.Write("Enter your new pin: ");
+            string newPin = Console.ReadLine();
+
+            var user = (from u in _context.TblUser
+                        where u.UserId == userId
+                        select u).FirstOrDefault();
+
+            //var user1=  _context.TblUser.FirstOrDefault(u => u.UserId == userId);
+            string newPinString = newPin.ToString();
+
+            string hashedPin = HashPin(newPinString);
+
+            user.Pin = hashedPin;
+
+            _context.SaveChanges();
         }
     }
 }

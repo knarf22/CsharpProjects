@@ -13,7 +13,7 @@ namespace CSharpChallenges.UI
             Console.WriteLine("Welcome to the C# Challenges!");
             Console.WriteLine("1. Show Balance");
             Console.WriteLine("2. Withdraw");
-            Console.WriteLine("3. Update Profile");
+            Console.WriteLine("3. Change Pin");
             Console.WriteLine("4. Exit");
             if(isAdmin)
             {
