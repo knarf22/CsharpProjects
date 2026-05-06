@@ -22,6 +22,11 @@ namespace CSharpChallenges
             _balanceService = balanceService;
         }
 
+        private void Continue()
+        {
+            Console.WriteLine("Press something to continue...");
+            Console.ReadLine();
+        }
         public void Run()
         {
             Console.WriteLine("Enter First Name: ");
@@ -44,6 +49,7 @@ namespace CSharpChallenges
 
             while (isRunning)
             {
+                Console.Clear();
                 _menu.Display(user.IsAdmin);
                 string choice = _menu.GetChoice();
 
@@ -52,16 +58,18 @@ namespace CSharpChallenges
                     case "1":
                         Console.WriteLine("Show Balance logic here");
                         _balanceService.GetUserBalance(user.UserId);
-
+                        Continue();
                         break;
 
                     case "2":
                         _balanceService.WithdrawBalance(user.UserId);
+                        Continue();
                         break;
 
                     case "4":
                         Console.WriteLine("Goodbye!");
                         isRunning = false;
+                        Continue();
                         break;
 
                     case "5":
@@ -73,6 +81,7 @@ namespace CSharpChallenges
                         {
                             Console.WriteLine("Invalid choice.");
                         }
+                        Continue();
                         break;
                     case "6":
                         if (user.IsAdmin)
@@ -83,9 +92,11 @@ namespace CSharpChallenges
                         {
                             Console.WriteLine("Invalid choice.");
                         }
+                        Continue();
                         break;
                     default:
                         Console.WriteLine("Invalid choice.");
+                        Continue();
                         break;
                 }
             }

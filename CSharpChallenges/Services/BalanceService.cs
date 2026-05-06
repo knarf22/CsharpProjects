@@ -60,7 +60,11 @@ namespace CSharpChallenges.Services
             }
 
             // 🏧 Get ATM cash
-            var atmBalance = _context.TblBalance
+            //var atmBalance = _context.TblBalance
+            //    .OrderByDescending(b => b.Denomination)
+            //    .ToList();
+
+            var atmBalance = GetATMAllBalance()
                 .OrderByDescending(b => b.Denomination)
                 .ToList();
 
