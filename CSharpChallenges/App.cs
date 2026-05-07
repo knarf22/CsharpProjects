@@ -103,7 +103,7 @@ namespace CSharpChallenges
                         if (user.IsAdmin)
                         {
                             // Show ATM Balance
-                            Console.WriteLine("ATM Balance: $100,000");
+                            _balanceService.GetATMBalance();
                             Continue();
                         }
                         else
@@ -116,7 +116,7 @@ namespace CSharpChallenges
                         if (user.IsAdmin)
                         {
                             // Update Balance
-                            Console.WriteLine("Balance updated successfully!");
+                            _balanceService.UpdateATMBalance();
                             Continue();
                         }
                         else

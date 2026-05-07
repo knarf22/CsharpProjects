@@ -135,7 +135,9 @@ namespace CSharpChallenges.Services
         public void GetATMBalance()
         {
                 var balances = GetATMAllBalance();
-
+                decimal totalBalance = balances.Sum(x => x.Quantity * x.Denomination);
+                Console.WriteLine($"Total balance : {totalBalance} \n");
+                
                 foreach (var balance in balances)
                 {
                     Console.WriteLine($"Bill: {balance.Denomination}, Amount: {balance.Quantity}");
