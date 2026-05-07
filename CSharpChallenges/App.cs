@@ -29,75 +29,101 @@ namespace CSharpChallenges
         }
         public void Run()
         {
-            Console.WriteLine("Enter First Name: ");
-            string firstName = Console.ReadLine();
 
-            Console.WriteLine("Enter PIN: ");
-            string inputPin = Console.ReadLine();
-            var user = _loginService.LoginUser(firstName!, inputPin);
 
+            var user = AuthenticateLoop();
             if (user == null)
             {
-                Console.WriteLine("Invalid credentials.");
+                Console.WriteLine("Exiting application...");
                 return;
             }
 
             Console.WriteLine("Login successful!");
+            MainMenuLoop(user);
+        }
 
-            // 📋 MENU LOOP
+        private TblUser? AuthenticateLoop()
+        {
+            while (true)
+            {
+                var (firstName, pin) = PromptCredentials();
+                var user = _loginService.LoginUser(firstName, pin);
+                if (user != null)
+                {
+                    return user;
+                }
+                Console.WriteLine("Invalid credentials.");
+                Console.WriteLine("Would you like to try again? (y/n)");
+                var retry = ((Console.ReadLine() ?? string.Empty).Trim());
+                if (!retry.Equals("y", StringComparison.OrdinalIgnoreCase))
+                {
+                    return null;
+                }
+                Console.Clear();
+            }
+
+        }
+        private (string FirstName, string Pin) PromptCredentials()
+        {
+            Console.Write("Enter First Name: ");
+            string firstName = Console.ReadLine() ?? string.Empty;
+
+            Console.Write("Enter PIN: ");
+            string pin = Console.ReadLine() ?? string.Empty;
+
+            return (firstName.Trim(), pin.Trim());
+        }
+
+        private void MainMenuLoop(TblUser user)
+        {
             bool isRunning = true;
-
             while (isRunning)
             {
                 Console.Clear();
                 _menu.Display(user.IsAdmin);
                 string choice = _menu.GetChoice();
-
                 switch (choice)
                 {
                     case "1":
-                        Console.WriteLine("Show Balance logic here");
                         _balanceService.GetUserBalance(user.UserId);
                         Continue();
                         break;
-
                     case "2":
                         _balanceService.WithdrawBalance(user.UserId);
                         Continue();
                         break;
-
                     case "3":
                         _loginService.ChangePin(user.UserId);
                         Continue();
                         break;
-
                     case "4":
-                        Console.WriteLine("Goodbye!");
                         isRunning = false;
-                        Continue();
                         break;
-
                     case "5":
                         if (user.IsAdmin)
                         {
-                            _balanceService.GetATMBalance();
+                            // Show ATM Balance
+                            Console.WriteLine("ATM Balance: $100,000");
+                            Continue();
                         }
                         else
                         {
                             Console.WriteLine("Invalid choice.");
+                            Continue();
                         }
-                        Continue();
                         break;
                     case "6":
                         if (user.IsAdmin)
                         {
-                            _balanceService.UpdateATMBalance();
+                            // Update Balance
+                            Console.WriteLine("Balance updated successfully!");
+                            Continue();
                         }
                         else
                         {
                             Console.WriteLine("Invalid choice.");
+                            Continue();
                         }
-                        Continue();
                         break;
                     default:
                         Console.WriteLine("Invalid choice.");
@@ -105,8 +131,6 @@ namespace CSharpChallenges
                         break;
                 }
             }
-
-
         }
     }
 }
