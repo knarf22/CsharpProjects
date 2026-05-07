@@ -132,6 +132,42 @@ namespace CSharpChallenges.Services
                     Console.WriteLine($"Bill: {balance.Denomination}, Amount: {balance.Quantity}");
                 }
         }
+
+        public void UpdateATMBalance()
+        {
+
+
+            var balance = GetATMAllBalance().OrderByDescending(b => b.Denomination).ToList();
+             UpdateATMBalanceDisplay();
+
+            Console.Write("Enter bill denomination to update: ");
+            int denomination = int.Parse(Console.ReadLine());
+            Console.Write("Enter new quantity: ");
+            int quantity = int.Parse(Console.ReadLine());
+            var bill = _context.TblBalance
+                .FirstOrDefault(b => b.BalanceId == denomination);
+            if (bill == null)
+            {
+                Console.WriteLine("Bill denomination not found.");
+                return;
+            }
+            bill.Quantity = quantity;
+            _context.SaveChanges();
+            Console.WriteLine("ATM balance updated successfully!");
+        }
+
+        private void UpdateATMBalanceDisplay()
+        {
+            var balance = GetATMAllBalance();
+
+            Console.WriteLine("Current Balance: ");
+            int index = 1;
+            foreach (var b in balance)
+            {
+                Console.WriteLine($"{index}. Bill: {b.Denomination}, Quantity: {b.Quantity}");
+                index++;    
+            }
+        }
         
     }
 }

@@ -91,7 +91,7 @@ namespace CSharpChallenges
                     case "6":
                         if (user.IsAdmin)
                         {
-                            Console.WriteLine("Update Balance logic here");
+                            _balanceService.UpdateATMBalance();
                         }
                         else
                         {
