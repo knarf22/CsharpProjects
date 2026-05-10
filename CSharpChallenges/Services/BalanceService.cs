@@ -27,7 +27,7 @@ namespace CSharpChallenges.Services
 
             foreach (var b in balances)
             {
-                Console.WriteLine($"Balance: {b.Balance} ");
+                Console.WriteLine($"Balance: {b.Balance.ToString("N2")} ");
             }
         }
 
@@ -136,11 +136,11 @@ namespace CSharpChallenges.Services
         {
                 var balances = GetATMAllBalance();
                 decimal totalBalance = balances.Sum(x => x.Quantity * x.Denomination);
-                Console.WriteLine($"Total balance : {totalBalance} \n");
+                Console.WriteLine($"Total balance : {totalBalance.ToString("N2")} \n");
                 
                 foreach (var balance in balances)
                 {
-                    Console.WriteLine($"Bill: {balance.Denomination}, Amount: {balance.Quantity}");
+                    Console.WriteLine($"Bill: {balance.Denomination.ToString("N2")}, Amount: {balance.Quantity}");
                 }
         }
 
