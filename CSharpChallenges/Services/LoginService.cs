@@ -15,6 +15,7 @@ namespace CSharpChallenges.Services
             _context = context;
         }
 
+        //read articles
         public TblUser? LoginUser(string firstName, string inputPin)
         {
             var user = _context.TblUser
