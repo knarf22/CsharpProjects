@@ -97,9 +97,13 @@ namespace CSharpChallenges
                         Continue();
                         break;
                     case "4":
-                        isRunning = false;
+                        Console.WriteLine("Transaction History");
+                        Continue();
                         break;
                     case "5":
+                        isRunning = false;
+                        break;
+                    case "6":
                         if (user.IsAdmin)
                         {
                             // Show ATM Balance
@@ -112,7 +116,7 @@ namespace CSharpChallenges
                             Continue();
                         }
                         break;
-                    case "6":
+                    case "7":
                         if (user.IsAdmin)
                         {
                             // Update Balance

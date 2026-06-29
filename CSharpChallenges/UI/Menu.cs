@@ -14,11 +14,12 @@ namespace CSharpChallenges.UI
             Console.WriteLine("1. Show Balance");
             Console.WriteLine("2. Withdraw");
             Console.WriteLine("3. Change Pin");
-            Console.WriteLine("4. Exit");
+            Console.WriteLine("4. Transaction History");
+            Console.WriteLine("5. Exit");
             if(isAdmin)
             {
-                Console.WriteLine("5. Show ATM Balance");
-                Console.WriteLine("6. Update Balance");
+                Console.WriteLine("6. Show ATM Balance");
+                Console.WriteLine("7. Update Balance");
             }
         }
 
