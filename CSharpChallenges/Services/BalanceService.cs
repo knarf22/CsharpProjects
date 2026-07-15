@@ -65,7 +65,7 @@ namespace CSharpChallenges.Services
         {
             if(!DivisiblyBy100(amount))
             {
-                return WithdrawalResult.CreateFailureResult("Amount must be divisible by 100.");
+                return WithdrawalResult.CreateFailureResult("Amount must be divisible by 100");
             }
 
             var user = ValidateUser(userId);
